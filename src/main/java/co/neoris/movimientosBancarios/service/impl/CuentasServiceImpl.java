@@ -58,7 +58,7 @@ public class CuentasServiceImpl implements CuentasService {
     ModelMapper modelMapper = new ModelMapper();
     modelMapper.addMappings(cuentasMap);
 
-    if (dto.getSaldoInicial() < 0) {
+    if (dto.getSaldo() < 0) {
       throw new ValidationException(("Saldo inicial debe ser mayor o igual a cero"));
     }
 
@@ -74,7 +74,7 @@ public class CuentasServiceImpl implements CuentasService {
     cuenta.setCliente(cliente);
     cuenta.setNumeroCuenta(dto.getNumeroCuenta());
     cuenta.setEstado(dto.getEstado());
-    cuenta.setSaldoInicial(dto.getSaldoInicial());
+    cuenta.setSaldo(dto.getSaldo());
 
     cuenta = cuentasRepository.save(cuenta);
 
@@ -114,7 +114,7 @@ public class CuentasServiceImpl implements CuentasService {
       cuenta.setCliente(cliente);
       cuenta.setNumeroCuenta(dtoActualizar.getNumeroCuenta());
       cuenta.setEstado(dtoActualizar.getEstado());
-      cuenta.setSaldoInicial(dtoActualizar.getSaldoInicial());
+      cuenta.setSaldo(dtoActualizar.getSaldo());
 
       cuenta = cuentasRepository.save(cuenta);
       return modelMapper.map(cuenta, CuentasDTO.class);

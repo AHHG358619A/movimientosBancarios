@@ -30,7 +30,10 @@ public class Movimientos {
   private Integer valor;
 
   @Column
-  private Integer saldo;
+  private Integer saldoInicial;
+
+  @Column
+  private Integer saldoDisponible;
 
   @Column
   private Boolean estado;

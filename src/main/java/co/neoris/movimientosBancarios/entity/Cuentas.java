@@ -28,7 +28,7 @@ public class Cuentas {
   private Integer numeroCuenta;
 
   @Column
-  private Integer saldoInicial;
+  private Integer saldo;
 
   @Column
   private Boolean estado;

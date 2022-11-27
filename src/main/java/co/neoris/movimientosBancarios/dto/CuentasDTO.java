@@ -7,7 +7,7 @@ public class CuentasDTO {
 
   private Integer id;
   private Integer numeroCuenta;
-  private Integer saldoInicial;
+  private Integer saldo;
   private Boolean estado;
   private Integer clienteId;
   private String nombreCliente;
