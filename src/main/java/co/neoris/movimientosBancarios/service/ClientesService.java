@@ -5,8 +5,11 @@ import java.util.List;
 
 public interface ClientesService {
 
-  List<ClientesDTO> getClientes();
+  List<ClientesDTO> getClients();
 
-  ClientesDTO createCliente(ClientesDTO dto);
+  ClientesDTO createClient(ClientesDTO dto);
 
+  boolean deleteClient(int clienteId);
+
+  ClientesDTO updateClient(int clienteId, ClientesDTO dtoActualizar);
 }
