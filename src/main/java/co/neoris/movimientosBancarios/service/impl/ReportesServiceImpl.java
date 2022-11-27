@@ -4,6 +4,7 @@ import co.neoris.movimientosBancarios.dto.ReportesDTO;
 import co.neoris.movimientosBancarios.entity.Movimientos;
 import co.neoris.movimientosBancarios.repository.MovimientosRepository;
 import co.neoris.movimientosBancarios.service.ReportesService;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
@@ -31,10 +32,14 @@ public class ReportesServiceImpl implements ReportesService {
   };
 
   @Override
-  public List<ReportesDTO> getReports() {
+  public List<ReportesDTO> getReports(String fechaInicio, String fechaFin) {
     ModelMapper modelMapper = new ModelMapper();
     modelMapper.addMappings(reportesMap);
-    return movimientosRepository.findAll().stream()
+
+    LocalDate dateInicio = LocalDate.parse(fechaInicio);
+    LocalDate dateFin = LocalDate.parse(fechaFin);
+
+    return movimientosRepository.findByFechaBetween(dateInicio, dateFin).stream()
         .map(movimiento -> modelMapper.map(movimiento, ReportesDTO.class))
         .collect(Collectors.toList());
   }

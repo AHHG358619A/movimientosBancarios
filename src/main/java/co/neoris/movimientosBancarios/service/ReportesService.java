@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface ReportesService {
 
-  List<ReportesDTO> getReports();
+  List<ReportesDTO> getReports(String fechaInicio, String fechaFin);
 }

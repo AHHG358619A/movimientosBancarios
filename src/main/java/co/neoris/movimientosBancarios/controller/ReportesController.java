@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,9 +31,11 @@ public class ReportesController {
       notes = "Obtener listado de reportes.")
   @ResponseStatus(value = HttpStatus.OK)
   @ResponseBody
-  public ResponseEntity<List<ReportesDTO>> getReportes() {
+  public ResponseEntity<List<ReportesDTO>> getReportes(
+      @RequestParam(required = true, name = "fechaInicio") String fechaInicio,
+      @RequestParam(required = true, name = "fechaFin") String fechaFin) {
 
-    List<ReportesDTO> reportesDTOList = reportesService.getReports();
+    List<ReportesDTO> reportesDTOList = reportesService.getReports(fechaInicio, fechaFin);
 
     return new ResponseEntity<>(reportesDTOList, HttpStatus.OK);
   }
