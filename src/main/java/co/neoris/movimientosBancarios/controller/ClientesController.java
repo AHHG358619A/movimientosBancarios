@@ -80,7 +80,7 @@ public class ClientesController {
     ClientesDTO clientesDTO = clientesService.updateClient(clienteId, dtoActualizar);
 
     if (clientesDTO != null) {
-      return new ResponseEntity(null, HttpStatus.ACCEPTED);
+      return new ResponseEntity(clientesDTO, HttpStatus.ACCEPTED);
     } else {
       return new ResponseEntity(null, HttpStatus.NOT_FOUND);
     }
